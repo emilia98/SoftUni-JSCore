@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum Numbers with HTML Form</title>
+</head>
+<body>
+    <h1>Sum Numbers with HTML Form</h1>
+
+    <form>
+        num1: <input type="text" name="num1" /> <br>
+        num2: <input type="text" name="num2" /> <br>
+        sum: <input type="text" name="sum" /> <br>
+
+        <input type="button" value="Sum" onclick="calculateSum()" />
+    </form>
+
+    <script>
+        function calculateSum(){
+            let num1 = document.getElementsByName('num1')[0].value;
+            let num2 = document.getElementsByName('num2')[0].value;
+
+            /* If we don't parse it with Number(),
+                it will concatenate num1 and num2
+               num1 = 5;
+               num2 = 8;
+               -----------
+               sum = 58;
+            let sum = num1 + num2;
+             */
+            let sum = Number(num1) + Number(num2);
+            document.getElementsByName('sum')[0].value = sum;
+        }
+    </script>
+</body>
+</html>

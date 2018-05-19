@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FromJSONToHTMLTable</title>
+    <style>
+        table,th{
+            border: groove;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+        }
+        td,th{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+</div>
+<script>
+    function fromJSONToHTMLTable(input){
+        let arrayOfObjects = JSON.parse(input);
+        let cols = Object.keys(arrayOfObjects[0]);
+        let htmlCode = "<table>\n";
+
+        htmlCode += `  <tr>`;
+        for (let col of cols) {
+            htmlCode += `<th>${escapeHTML(col)}</th>`;
+        }
+        htmlCode += `</tr>\n`;
+
+        for (let obj of arrayOfObjects) {
+            let values = Object.values(obj);
+
+            htmlCode += `  <tr>`;
+            for (let val of values) {
+                if(isNaN(val)){
+                    htmlCode += `<td>${escapeHTML(val)}</td>`;
+                }
+                else{
+                    htmlCode += `<td>${val}</td>`;
+                }
+            }
+            htmlCode += `</tr>\n`;
+        }
+
+        htmlCode += "</table>";
+        return htmlCode;
+
+        function escapeHTML(text){
+            return text.replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+    }
+    /*
+    window.onload = function(){
+        let container = document.getElementById('wrapper');
+        container.innerHTML = fromJSONToHTMLTable('[{"Name":"Tomatoes & Chips","Price":2.35},{"Name":"J&B Chocolate","Price":0.96}]');
+    };*/
+
+    window.onload = function(){
+        let container = document.getElementById('wrapper');
+        container.innerHTML = fromJSONToHTMLTable('[{"Name":"Pesho &&&-a","Age":20,"City":"Sofia"},{"Name":"Gosho","Age":18,"City":"Plovdiv"},{"Name":"Angel","Age":18,"City":"Veliko Tarnovo"}]');
+    };
+</script>
+</body>
+</html>
