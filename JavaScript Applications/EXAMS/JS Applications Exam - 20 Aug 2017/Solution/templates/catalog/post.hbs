@@ -1,0 +1,16 @@
+{{#if userPosts}}
+    <div class="post post-content">
+        <h1>Your Posts</h1>
+    </div>
+{{/if}}
+<div class="posts">
+    <article class="post">
+        <div class="col rank">
+            <span>{{rank}}</span>
+        </div>
+        {{> postInfo}}
+        {{#if userPosts}}
+            <div class="clear"></div>
+        {{/if}}
+    </article>
+</div>
