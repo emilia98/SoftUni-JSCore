@@ -50,4 +50,4 @@ let remote = (() => {
     return {
         get, post, update, remove
     }
-});
+})();

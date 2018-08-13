@@ -1,0 +1,20 @@
+<table>
+    <thead>
+    <tr>
+        <th>To</th>
+        <th>Message</th>
+        <th>Date Sent</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each messages}}
+        <tr>
+            <td>{{recipient_username}}</td>
+            <td>{{text}}</td>
+            <td>{{dateSended}}</td>
+            <td><button data-id="{{_id}}" class="delete-btn">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

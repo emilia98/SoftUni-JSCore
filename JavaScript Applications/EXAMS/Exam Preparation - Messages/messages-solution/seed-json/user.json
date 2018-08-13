@@ -3,6 +3,7 @@
     "_id": "58482aa8a82816222b9b3109",
     "username": "nakov",
     "name": "Svetlin Nakov",
+    "password": "nakov",
     "_kmd": {
       "lmt": "2016-12-07T15:28:40.461Z",
       "ect": "2016-12-07T15:28:40.461Z"
@@ -15,6 +16,7 @@
     "_id": "58482acac077970e38c6eb54",
     "username": "maria",
     "name": "Just Maria",
+    "password": "maria",
     "_kmd": {
       "lmt": "2016-12-07T15:29:14.358Z",
       "ect": "2016-12-07T15:29:14.358Z"
@@ -26,6 +28,7 @@
   {
     "_id": "58482ad801bde1035e9548d8",
     "username": "peter",
+    "password": "peter",
     "name": "Peter Demeter",
     "_kmd": {
       "lmt": "2016-12-07T15:29:28.938Z",

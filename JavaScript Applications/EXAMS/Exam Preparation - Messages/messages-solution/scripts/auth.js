@@ -10,7 +10,7 @@ let auth = (() => {
         localStorage.setItem('authtoken', data._kmd.authtoken);
     }
 
-    async function login(username, password) {
+    function login(username, password) {
         let data = {
             username, password
         };
@@ -35,4 +35,4 @@ let auth = (() => {
     return {
         isAuthenticated, saveSession, login, register, logout
     }
-});
+})();

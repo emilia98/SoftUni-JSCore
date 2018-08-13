@@ -1,14 +1,18 @@
 <section id="viewSendMessage">
     <h1>Send Message</h1>
-    <form id="formSendMessage">
+
+    <form id="formSendMessage" action="#/message/send" method="post">
         <div>Recipient:</div>
         <div>
             <select name="recipient" required id="msgRecipientUsername">
-                <option value="maria">Maria Georgieva (maria)</option>
-                <option value="guest">guest</option>
-                <option value="peter">Peter Ivanova (peter)</option>
-                <option value="todor">todor</option>
-                <!-- TODO: more users will come here -->
+                {{#each users}}
+                    {{#if name}}
+                        <option value="{{username}}">{{name}} ({{username}})</option>
+                    {{else}}
+                        <option value="{{username}}">{{username}}</option>
+                    {{/if}}
+
+                {{/each}}
             </select>
         </div>
         <div>Message Text:</div>

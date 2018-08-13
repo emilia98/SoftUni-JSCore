@@ -1,70 +1,28 @@
 const handlers = {};
-
+let isAuth;
 $(() => {
+    isAuth = utils.hasUser();
+
     const app = Sammy('#main', function() {
+        console.log(isAuth);
         this.use('Handlebars', 'hbs');
 
-        this.get('index.html', function () {
-            this.loadPartials({
-                header: './templates/common/header.hbs',
-                footer: './templates/common/footer.hbs',
-                notifications: './templates/common/notifications.hbs',
-                page: './templates/home/anonymous.hbs'
-            }).then(function() {
-                this.partial('./templates/common/main.hbs')
-            })
-        });
+        this.get('index.html', handlers.home);
 
         this.get('#/login', handlers.login);
         this.post('#/login', handlers.loginPost);
 
-        this.get('#/register', function() {
-            this.loadPartials({
-                header: './templates/common/header.hbs',
-                footer: './templates/common/footer.hbs',
-                notifications: './templates/common/notifications.hbs',
-                page: './templates/auth/register.hbs'
-            }).then(function() {
-                this.partial('./templates/common/main.hbs')
-            })
-        });
+        this.get('#/register', handlers.register);
+        this.post('#/register', handlers.registerPost);
 
-        this.get('#/messages/my', function() {
-            this.loadPartials({
-                header: './templates/common/header.hbs',
-                footer: './templates/common/footer.hbs',
-                notifications: './templates/common/notifications.hbs',
-                page: './templates/messages/my-messages.hbs'
-            }).then(function() {
-                this.partial('./templates/common/main.hbs')
-            })
-        });
-        this.get('#/messages/archive', function() {
-            this.loadPartials({
-                header: './templates/common/header.hbs',
-                footer: './templates/common/footer.hbs',
-                notifications: './templates/common/notifications.hbs',
-                page: './templates/messages/archive.hbs'
-            }).then(function() {
-                this.partial('./templates/common/main.hbs')
-            })
-        });
+        this.get('#/messages/my', handlers.myMessages);
 
-        this.get('#/message/send', function() {
-            this.loadPartials({
-                header: './templates/common/header.hbs',
-                footer: './templates/common/footer.hbs',
-                notifications: './templates/common/notifications.hbs',
-                page: './templates/messages/send-message.hbs'
-            }).then(function() {
-                this.partial('./templates/common/main.hbs')
-            })
-        });
+        this.get('#/messages/archive', handlers.showArchive);
 
-        this.get('#/logout', function() {
-            alert('Logged out!');
-        });
+        this.get('#/message/send', handlers.getMessageForm);
+        this.post('#/message/send', handlers.sendMessage);
 
+        this.get('#/logout', handlers.logout);
     });
 
     app.run();
