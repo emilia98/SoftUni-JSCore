@@ -16,7 +16,7 @@ handlers.loginPost = function(context) {
 
             auth.saveSession(userData);
             isAuth = true;
-            notifications.showInfo('Successfully logged in!');
+            notifications.showInfo('Login successful!');
             context.redirect('#');
 
         } catch (err) {
@@ -45,10 +45,10 @@ handlers.registerPost = function(context) {
 
         try {
             userData = await auth.register(username, password, name);
-            auth.saveSession(userData);
-            notifications.showInfo('Successfully registered!');
-            context.redirect('#');
             isAuth = true;
+            auth.saveSession(userData);
+            notifications.showInfo('User registration successful!');
+            context.redirect('#');
         } catch (err) {
             if(err.responseJSON) {
                 notifications.showError(err.responseJSON.description);
@@ -69,7 +69,7 @@ handlers.logout = function(context) {
             result = await auth.logout();
             localStorage.clear();
             isAuth = false;
-            notifications.showInfo('Logout successfully!');
+            notifications.showInfo('Logout successful!');
             context.redirect('#');
 
         } catch (err) {

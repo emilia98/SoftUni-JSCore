@@ -71,11 +71,9 @@ handlers.sendMessage = function(context) {
 
         try {
             data = await remote.post('appdata', 'messages', message);
-            console.log(data);
             notifications.showInfo('Message sent.');
             context.redirect('#/messages/archive');
         } catch(err) {
-            console.log(err);
             if(err.responseJSON) {
                 notifications.showError(err.responseJSON.description);
             } else {
