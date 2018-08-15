@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each products}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{description}}</td>
+        <td>{{price}}</td>
+        <td>
+            <button type="button" data-id="{{_id}}" class="purchase">Purchase</button>
+        </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
