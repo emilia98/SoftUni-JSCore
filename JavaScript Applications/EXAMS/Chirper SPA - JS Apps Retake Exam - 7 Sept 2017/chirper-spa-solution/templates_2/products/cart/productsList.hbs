@@ -1,0 +1,26 @@
+<table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each products}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.totalPrice}}</td>
+            <td>
+                <button type="button" class="discard" data-id="{{this.id}}">
+                    Discard
+                </button>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

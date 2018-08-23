@@ -1,0 +1,14 @@
+{{>header}}
+{{#if isAuth}}
+    <div class="menu">
+        <a href="">Home</a>
+        <a href="#/discover">Discover</a>
+        <a href="#/me">Me</a>
+        <a href="#/logout">Logout</a>
+    </div>
+{{/if}}
+<div id="main">
+    {{> page}}
+</div>
+
+{{>footer}}
