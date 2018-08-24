@@ -1,0 +1,21 @@
+<section id="viewCatalog" class="background-img">
+    {{#if isAuth}}
+        <a href="#/flight/create" class="add-flight">Add Flight +</a>
+    {{/if}}
+
+    <div class="added-flights">
+        {{#each flights}}
+            <a href="#/flight/details/{{id}}" class="added-flight">
+                {{#if imageUrl}}
+                    <img src="{{imageUrl}}" alt="{{origin}}-{{destination}}" class="picture-added-flight">
+                {{else}}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png" alt="{{origin}}-{{destination}}" class="picture-added-flight">
+                {{/if}}
+
+                <h3>{{destination}}</h3>
+                <span>from {{origin}}</span><span>{{day}} {{month}}</span>
+            </a>
+        {{/each}}
+
+    </div>
+</section>
